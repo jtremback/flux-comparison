@@ -6,6 +6,7 @@ function addToCart (products, newProduct) {
 }
 
 function receiveProducts (products, newProducts) {
+    newProducts = newProducts.toMap().mapKeys((k, v) => v.get('id'));
     return products.merge(newProducts);
 }
 

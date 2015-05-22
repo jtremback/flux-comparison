@@ -1,8 +1,9 @@
 import * as API from '../utils/WebAPIUtils';
 import flux from '../Flux.js';
+import { toImmutable } from 'nuclear-js';
 
 export function receiveProducts (products) {
-    flux.dispatch('RECEIVE_PRODUCTS', products);
+    flux.dispatch('RECEIVE_PRODUCTS', toImmutable(products));
 }
 
 export async function getAllProducts () {
@@ -19,8 +20,10 @@ export function finishCheckout (products) {
 }
 
 export async function cartCheckout (products) {
-    flux.dispatch('CART_CHECKOUT', products);
+    if (products) {
+        flux.dispatch('CART_CHECKOUT', products);
 
-    products = await API.checkoutProducts(products);
-    finishCheckout(products);
+        products = await API.checkoutProducts(products);
+        finishCheckout(products);
+    }
 }

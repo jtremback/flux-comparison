@@ -1,8 +1,10 @@
-import shop from '../../../common/api/shop';
+import * as shop from '../../../common/api/shop';
 
 export function getAllProducts () {
     return new Promise((resolve) => {
-        shop.getProducts(products => resolve(products));
+        shop.getProducts(products => {
+          resolve(products);
+        });
     });
 }
 

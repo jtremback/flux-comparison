@@ -12,18 +12,13 @@ export default React.createClass({
         };
     },
 
-    onCheckoutClicked() {
-        if (this.state.products.length) {
-            actions.cartCheckout(this.state.products);
-        }
-    },
-
     render() {
         return (
             <Cart
                 products={this.state.products}
-                total={this.state.total}
-                onCheckoutClicked={this.onCheckoutClicked}
+                // Coerce to string
+                total={this.state.total + ''}
+                onCheckoutClicked={() => actions.cartCheckout(this.state.products)}
             />
         );
     }

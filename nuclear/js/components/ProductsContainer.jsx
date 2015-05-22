@@ -1,23 +1,18 @@
 import React from 'react';
-import { getters, actions, ReactMixin } from '../flux.js';
+import { getters, actions, ReactMixin, default as flux } from '../flux.js';
 
 import ProductItem from '../../../common/components/ProductItem.jsx';
 import ProductsList from '../../../common/components/ProductsList.jsx';
 
 const ProductItemContainer = React.createClass({
-    onAddToCartClicked() {
-        actions.addToCart(this.props.product);
-    },
-
-    render() {
+    render () {
         return (
             <ProductItem
                 product={this.props.product}
-                onAddToCartClicked={this.onAddToCartClicked}
+                onAddToCartClicked={() => actions.addToCart(this.props.product)}
             />
         );
     }
-
 });
 
 export default React.createClass({
@@ -25,11 +20,12 @@ export default React.createClass({
 
     getDataBindings () {
         return {
-            products: getters.products.getProducts
+            products: ['products']
         };
     },
 
-    render() {
+    render () {
+        setTimeout(() => console.log('bam', flux.evaluateToJS(['products'])), 5000);
         const nodes = this.state.products.map(product => {
             return (
                 <ProductItemContainer
@@ -41,7 +37,7 @@ export default React.createClass({
         });
 
         return (
-            <ProductsList title="Flux Shop Demo (Nucular.js)">
+            <ProductsList title="Flux Shop Demo (Nuclear.js)">
                 {nodes}
             </ProductsList>
         );
