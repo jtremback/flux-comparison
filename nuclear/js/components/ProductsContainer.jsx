@@ -20,13 +20,13 @@ const ProductItemContainer = React.createClass({
 
 });
 
-export default const ProductsListContainer = React.createClass({
+export default React.createClass({
     mixins: [ReactMixin],
 
     getDataBindings () {
         return {
             products: getters.products.getProducts
-        }
+        };
     },
 
     render() {

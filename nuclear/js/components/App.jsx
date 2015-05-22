@@ -2,7 +2,7 @@ import React from 'react';
 import CartContainer from './CartContainer.jsx';
 import ProductsContainer from './ProductsContainer.jsx';
 
-export default const App = React.createClass({
+export default React.createClass({
     render() {
         const { context } = this.props;
 

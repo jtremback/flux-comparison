@@ -1,17 +1,13 @@
-const getters = {
-    products: {
-        getProducts: ['products']
-    },
+export const products = {
+    getProducts: ['products']
+};
 
-    cart: {
-        getProducts: ['cart'],
-        getTotal: [
-            getters.cart.getProducts,
-            products => products.reduce(
-                (acc, product) => acc + (product.price * product.quantity)
-            )
-        ]
-    }
-}
-
-export getters
+export const cart = {
+    getProducts: ['cart'],
+    getTotal: [
+        ['cart'],
+        products => products.reduce(
+            (acc, product) => acc + (product.price * product.quantity)
+        )
+    ]
+};

@@ -1,14 +1,6 @@
-module.exports = new Nuclear.Store({
-    getInitialState () {
-        return toImmutable({})
-    },
+import Nuclear from 'nuclear-js';
 
-    initialize () {
-        this.on('ADD_TO_CART', addToCart);
-        this.on('RECEIVE_PRODUCTS', receiveProducts);
-    }
-})
-
+// ACTION HANDLERS
 function addToCart (products, newProduct) {
     return products.set(newProduct.id, newProduct);
 }
@@ -16,3 +8,14 @@ function addToCart (products, newProduct) {
 function receiveProducts (products, newProducts) {
     return products.merge(newProducts);
 }
+
+export default new Nuclear.Store({
+    getInitialState () {
+        return Nuclear.toImmutable({});
+    },
+
+    initialize () {
+        this.on('ADD_TO_CART', addToCart);
+        this.on('RECEIVE_PRODUCTS', receiveProducts);
+    }
+});

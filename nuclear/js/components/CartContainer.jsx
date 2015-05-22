@@ -1,14 +1,15 @@
 import React from 'react';
+import Cart from '../../../common/components/Cart.jsx';
 import { getters, actions, ReactMixin } from '../flux.js';
 
-export default const CartContainer = React.createClass({
+export default React.createClass({
     mixins: [ReactMixin],
 
     getDataBindings () {
         return {
             products: getters.cart.getProducts,
             total: getters.cart.getTotal
-        }
+        };
     },
 
     onCheckoutClicked() {
