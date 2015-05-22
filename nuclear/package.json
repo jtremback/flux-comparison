@@ -1,22 +1,27 @@
 {
   "main": "js/app.js",
   "scripts": {
-    "start": "../node_modules/watchify/bin/cmd.js . -o build/bundle.js -v -d",
-    "build": "browserify -d js/app.js > build/bundle.js"
+    "start": "watchify js/app.js -v -d -o build/bundle.js",
+    "build": "browserify js/app.js -o build/bundle.js"
   },
   "browserify": {
     "transform": [
       [
         "babelify",
         {
-          "experimental": true,
+          "stage": 1,
           "optional": [
             "runtime"
           ]
         }
-      ],
-      "envify"
+      ]
     ]
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "babel-runtime": "^5.4.7",
+    "babelify": "^6.1.1",
+    "browserify": "^10.2.1",
+    "watchify": "^3.2.1"
+  }
 }
