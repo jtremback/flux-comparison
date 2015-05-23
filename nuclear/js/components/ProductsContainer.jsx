@@ -25,7 +25,8 @@ export default React.createClass({
     },
 
     render () {
-        setTimeout(() => console.log('bam', flux.evaluateToJS(['products'])), 5000);
+        var that = this;
+        setTimeout(() => console.log('bam', flux.evaluate(['products']), that.state.products), 5000);
         const nodes = this.state.products.map(product => {
             return (
                 <ProductItemContainer
