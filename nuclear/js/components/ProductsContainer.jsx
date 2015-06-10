@@ -1,5 +1,7 @@
 import React from 'react';
-import { getters, actions, ReactMixin, default as flux } from '../flux.js';
+import flux from '../flux.js';
+import getters from '../getters.js';
+import actions from '../actions.js';
 
 import ProductItem from '../../../common/components/ProductItem.jsx';
 import ProductsList from '../../../common/components/ProductsList.jsx';
@@ -16,7 +18,7 @@ const ProductItemContainer = React.createClass({
 });
 
 export default React.createClass({
-    mixins: [ReactMixin],
+    mixins: [flux.ReactMixin],
 
     getDataBindings () {
         return {
@@ -24,13 +26,14 @@ export default React.createClass({
         };
     },
 
+    componentDidMount () {
+        flux.observe(['products'], console.log);
+    },
+
     render () {
-        var that = this;
-        setTimeout(() => console.log('bam', flux.evaluate(['products']), that.state.products), 5000);
         const nodes = this.state.products.map(product => {
             return (
                 <ProductItemContainer
-                    flux={this.props.flux}
                     key={product.id}
                     product={product}
                 />

@@ -1,9 +1,11 @@
 import React from 'react';
 import Cart from '../../../common/components/Cart.jsx';
-import { getters, actions, ReactMixin } from '../flux.js';
+import flux from '../flux.js';
+import * as getters from '../getters.js';
+import * as actions from '../actions.js';
 
 export default React.createClass({
-    mixins: [ReactMixin],
+    mixins: [flux.ReactMixin],
 
     getDataBindings () {
         return {

@@ -1,5 +1,5 @@
-import * as API from '../utils/WebAPIUtils';
-import flux from '../Flux.js';
+import * as API from './utils/WebAPIUtils';
+import flux from './flux.js';
 import { toImmutable } from 'nuclear-js';
 
 export function receiveProducts (products) {

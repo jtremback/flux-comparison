@@ -1,10 +1,11 @@
 import React from 'react';
-import flux from './Flux.js';
+import flux from './flux.js';
+import { getAllProducts } from './actions.js';
 import App from './components/App.jsx';
 
-flux.actions.getAllProducts();
+getAllProducts();
 
 React.render(
-    React.createElement(App, { flux }),
+    React.createElement(App),
     document.getElementById('flux-app')
 );
