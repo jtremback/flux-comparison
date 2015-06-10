@@ -1,7 +1,7 @@
 import React from 'react';
 import flux from '../flux.js';
-import getters from '../getters.js';
-import actions from '../actions.js';
+import * as getters from '../getters.js';
+import * as actions from '../actions.js';
 
 import ProductItem from '../../../common/components/ProductItem.jsx';
 import ProductsList from '../../../common/components/ProductsList.jsx';
